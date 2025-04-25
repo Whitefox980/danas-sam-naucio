@@ -55,3 +55,17 @@ export default function App() {
     </div>
   );
         }
+// Dodaj na dnu komponente
+useEffect(() => {
+  if ('Notification' in window) {
+    Notification.requestPermission();
+  }
+}, []);
+
+const sendNotification = () => {
+  if (Notification.permission === 'granted') {
+    new Notification('Podsetnik', {
+      body: 'Zabeleži šta si danas naučio!',
+    });
+  }
+};
